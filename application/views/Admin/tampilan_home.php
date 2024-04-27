@@ -12,7 +12,7 @@
             <div class="card-body bg-success">
                 <div class="row">
                     <div class="col">
-                        <h3 class="text-white  font-italic font-weight-bold">0</h3>
+                        <h3 class="text-white  font-italic font-weight-bold"><?= $siswa['jumlah_siswa'] ?></h3>
                         <h4 class=" text-white font-italic font-weight-bold">Siswa</h4>
                     </div>
                 </div>
