@@ -45,6 +45,28 @@ WHERE tahun_ajaran.id_ta='$id_ta';";
         return $query->result_array();
     }
 
+    public function dataSiswaTransaksi()
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,jurusan.jurusan FROM `siswa`
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN jurusan
+ON siswa.kode=jurusan.kode
+GROUP BY siswa.nis
+ORDER BY siswa.id_siswa ASC;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function dataHeaderTransaksiNIS($nis)
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa FROM `siswa`
+WHERE siswa.nis='$nis'
+GROUP BY siswa.nis;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+
     function simpanSiswa($data = array())
     {
         $jumlah = count($data);

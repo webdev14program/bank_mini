@@ -54,17 +54,16 @@
             Transaksi
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard/transaksi">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Setoran</span></a>
-
+                <span>Transaksi</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="charts.html">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Penarikan</span></a>
 
-        </li>
+        </li> -->
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

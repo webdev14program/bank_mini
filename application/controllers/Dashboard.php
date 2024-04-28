@@ -251,7 +251,28 @@ class Dashboard extends CI_Controller
             }
         }
     }
-
-
     // End Siswa
+
+    // Start Transaksi
+    public function transaksi()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['siswa'] = $this->Model_siswa->dataSiswaTransaksi();
+
+        $isi['content'] = 'Admin/transaksi/tampilan_transaksi_nis';
+        $this->load->view('templates/header');
+        $this->load->view('Admin/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+    public function detail_transaksi_nis($nis)
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['header'] = $this->Model_siswa->dataHeaderTransaksiNIS($nis);
+
+        $isi['content'] = 'Admin/transaksi/tampilan_detail_transaksi_nis';
+        $this->load->view('templates/header');
+        $this->load->view('Admin/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+    // End Transaksi
 }
