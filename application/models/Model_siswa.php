@@ -67,6 +67,18 @@ GROUP BY siswa.nis;";
         return $query->row_array();
     }
 
+    public function dataTransaksiNIS($nis)
+    {
+        $sql = "SELECT kelas.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN tahun_ajaran
+ON siswa.id_ta=tahun_ajaran.id_ta
+WHERE siswa.nis='$nis';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
     function simpanSiswa($data = array())
     {
         $jumlah = count($data);

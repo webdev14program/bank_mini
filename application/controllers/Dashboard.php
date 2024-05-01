@@ -268,6 +268,7 @@ class Dashboard extends CI_Controller
     {
         $this->Model_keamanan->getKeamanan();
         $isi['header'] = $this->Model_siswa->dataHeaderTransaksiNIS($nis);
+        $isi['siswa'] = $this->Model_siswa->dataTransaksiNIS($nis);
 
         $isi['content'] = 'Admin/transaksi/tampilan_detail_transaksi_nis';
         $this->load->view('templates/header');
