@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2024 at 04:32 PM
+-- Generation Time: May 01, 2024 at 12:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -1391,6 +1391,20 @@ INSERT INTO `tahun_ajaran` (`id_ta`, `tahun_ajaran`, `status`) VALUES
 (2526, '2025/2026', 'TIDAK AKTIF'),
 (2627, '2026/2027', 'TIDAK AKTIF');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id_transaksi` int(20) NOT NULL,
+  `nis` int(20) NOT NULL,
+  `jenis_transaksi` varchar(254) NOT NULL,
+  `nominal` int(254) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -1426,6 +1440,12 @@ ALTER TABLE `tahun_ajaran`
   ADD PRIMARY KEY (`id_ta`);
 
 --
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id_transaksi`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1458,6 +1478,12 @@ ALTER TABLE `siswa`
 --
 ALTER TABLE `tahun_ajaran`
   MODIFY `id_ta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2628;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id_transaksi` int(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
