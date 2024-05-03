@@ -15,6 +15,12 @@ class Dashboard extends CI_Controller
         $isi['jurusan'] = $this->Model_jurusan->countJurusan();
         $isi['kelas'] = $this->Model_kelas->countKelas();
         $isi['siswa'] = $this->Model_siswa->countSiswa();
+        $isi['ta'] = $this->Model_Tahun_Ajaran->HomedataTA();
+
+        $isi['setoran'] = $this->Model_transaksi->dataHeaderSetoran();
+        $isi['penarikan'] = $this->Model_transaksi->dataHeaderpenarikan();
+        $isi['adm'] = $this->Model_transaksi->dataHeaderADM();
+        $isi['total'] = $this->Model_transaksi->dataHeaderTotal();
 
         $isi['content'] = 'Admin/tampilan_home';
         $this->load->view('templates/header');
@@ -270,10 +276,55 @@ class Dashboard extends CI_Controller
         $isi['header'] = $this->Model_siswa->dataHeaderTransaksiNIS($nis);
         $isi['siswa'] = $this->Model_siswa->dataTransaksiNIS($nis);
 
+        // Tabel Transaksi
+        $isi['transaksi'] = $this->Model_transaksi->dataTransaksiNIS($nis);
+        $isi['setoran'] = $this->Model_transaksi->dataSetoranNIS($nis);
+        $isi['penarikan'] = $this->Model_transaksi->dataPenarikanNIS($nis);
+        // End Tabel
+
         $isi['content'] = 'Admin/transaksi/tampilan_detail_transaksi_nis';
         $this->load->view('templates/header');
         $this->load->view('Admin/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+
+    public function tambah_transaksi()
+    {
+        $id_transaksi = rand(11111111, 99999999);
+        $nis = $this->input->post('nis');
+        $jenis_transaksi = $this->input->post('jenis_transaksi');
+        $no_rek = $this->input->post('no_rek');
+        $nominal = $this->input->post('nominal');
+
+        // ADMIN
+        $nominal_adm = $this->input->post('nominal_adm');
+        // 
+
+        $data = array(
+            'id_transaksi' => $id_transaksi,
+            'nis' => $nis,
+            'jenis_transaksi' => $jenis_transaksi,
+            'no_rek' => $no_rek,
+            'nominal' => $nominal,
+        );
+
+        $data_admin = array(
+            'id_transaksi_admin' => rand(11111111, 99999999),
+            'id_transaksi' => $id_transaksi,
+            'nominal_adm' => $nominal_adm,
+        );
+
+        $this->db->insert('transaksi', $data);
+        $this->db->insert('transaksi_admin', $data_admin);
+        redirect('Dashboard/detail_transaksi_nis/' . $nis);
+    }
     // End Transaksi
+
+    // Logout
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('/');
+    }
+    // End Logout
 }

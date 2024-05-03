@@ -11,7 +11,7 @@ ON kelas.id_ta=tahun_ajaran.id_ta
 WHERE tahun_ajaran.status='AKTIF'
 GROUP BY kelas.id_ta;";
         $query = $this->db->query($sql);
-        return $query->row_array();
+        return $query->result_array();
     }
 
 

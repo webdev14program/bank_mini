@@ -6,7 +6,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
-            <div class="sidebar-brand-text mx-3 text-uppercase font-weight-bolder">admin utama<br>bank mini</div>
+            <div class="sidebar-brand-text mx-3 text-uppercase font-weight-bolder">kepala<br>bank mini</div>
         </a>
 
         <!-- Divider -->
@@ -20,44 +20,6 @@
         </li>
 
         <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Data Master
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Data Master</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item text-primary" href="<?= base_url() ?>Dashboard/tahun_ajaran">Tahun Ajar</a>
-                    <a class="collapse-item text-primary" href="<?= base_url() ?>Dashboard/jurusan">Jurusan</a>
-                    <a class="collapse-item text-primary" href="<?= base_url() ?>Dashboard/kelas">Kelas</a>
-                    <a class="collapse-item text-primary" href="<?= base_url() ?>Dashboard/siswa">Siswa</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Transaksi
-        </div>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/transaksi">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Transaksi</span></a>
-        </li>
         <hr class="sidebar-divider">
 
         <!-- Heading -->
@@ -80,6 +42,7 @@
                 <span>Laporan Pertahun</span></a>
         </li>
         <hr class="sidebar-divider">
+
         <div class="sidebar-heading">
             Logout
         </div>

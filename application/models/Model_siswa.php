@@ -10,7 +10,7 @@ INNER JOIN tahun_ajaran
 ON siswa.id_ta=tahun_ajaran.id_ta
 WHERE tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
-        return $query->row_array();
+        return $query->result_array();
     }
 
     public function dataSiswa()
@@ -60,9 +60,10 @@ ORDER BY siswa.id_siswa ASC;";
 
     public function dataHeaderTransaksiNIS($nis)
     {
-        $sql = "SELECT siswa.nis,siswa.nama_siswa FROM `siswa`
-WHERE siswa.nis='$nis'
-GROUP BY siswa.nis;";
+        $sql = "SELECT siswa.nis,siswa.id_ta,siswa.nama_siswa,tahun_ajaran.tahun_ajaran,tahun_ajaran.status FROM `siswa`
+INNER JOIN tahun_ajaran
+ON siswa.id_ta=tahun_ajaran.id_ta
+WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
