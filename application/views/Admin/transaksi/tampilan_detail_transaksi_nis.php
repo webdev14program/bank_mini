@@ -8,40 +8,81 @@
 
  <div class="row">
      <div class="col-md mt-2">
-         <div class="alert alert-primary" role="alert">
-             <h6>Rp 0</h6>
-             <h6>Total Tabungan</h6>
+         <div class="row">
+             <div class="col">
+                 <div class="card">
+                     <div class="card-body">
+                         <div class="table-responsive">
+                             <table class="table table-striped table-bordered">
+                                 <thead class="text-center">
+                                     <tr class="">
+                                         <th scope="col">
+                                             <h6 class="font-weight-bold text-uppercase">Setoran</h6>
+                                         </th>
+                                         <th scope="col">
+                                             <h6 rowspan=2 class="font-weight-bold text-uppercase">Penarikan</h6>
+                                         </th>
+
+                                     </tr>
+                                 </thead>
+                                 <tbody class="text-center">
+                                     <tr>
+                                         <td>
+                                             <button type="button" class="btn btn-primary btn-primary  text-uppercase font-weight-bolder btn-sm" data-toggle="modal" data-target="#setoran">
+                                                 tambah setoran
+                                             </button>
+                                         </td>
+                                         <td>
+                                             <button type="button" class="btn btn-primary btn-danger  text-uppercase font-weight-bolder btn-sm" data-toggle="modal" data-target="#penarikan">
+                                                 tambah penarikan
+                                             </button>
+                                         </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
          </div>
      </div>
-     <div class="col-md mt-2">
-         <div class="alert alert-success" role="alert">
-             <h6>Rp 0</h6>
-             <h6>Setoran</h6>
-         </div>
-     </div>
-     <div class="col-md mt-2">
-         <div class="alert alert-danger" role="alert">
-             <h6>Rp 0</h6>
-             <h6>Penarikan</h6>
-         </div>
-     </div>
- </div>
- <div class="row">
-     <div class="col-md mt-2">
+     <div class="col-md-7 mt-2">
          <div class="card">
              <div class="card-body">
-                 <button type="button" class="btn btn-primary btn-primary btn-sm text-uppercase font-weight-bolder" data-toggle="modal" data-target="#setoran">
-                     tambah setoran
-                 </button>
-                 <button type="button" class="btn btn-primary btn-danger btn-sm text-uppercase font-weight-bolder" data-toggle="modal" data-target="#penarikan">
-                     tambah penarikan
-                 </button>
+                 <div class="table-responsive">
+                     <table class="table table-striped table-bordered">
+                         <thead class="text-center">
+                             <tr class="">
+
+                                 <th scope="col">
+                                     <h6 class="font-weight-bold text-uppercase">total tabungan</h6>
+                                 </th>
+
+                             </tr>
+                         </thead>
+                         <tbody class="text-center">
+                             <tr>
+                                 <?php
+                                    $no = 1;
+                                    foreach ($total_tabungan as $row) {
+                                    ?>
+
+                                     <td>
+                                         <h6 class="text-uppercase font-weight-bold "><?= ("Rp " . number_format($row['total_tabungan_siswa_nis'], 2, ',', '.')) ?></h6>
+                                     </td>
+                             </tr>
+                         <?php } ?>
+                         </tbody>
+                     </table>
+                 </div>
              </div>
          </div>
      </div>
  </div>
+
  <div class="row">
-     <div class="col-md-4 mt-3 mb-4">
+     <div class="col-md-5 mt-3 mb-4">
          <div class="card">
              <div class="card-header alert alert-primary">
                  <h5 class="text-center">Detail Kelas</h5>
@@ -172,13 +213,6 @@
                      <div class="row">
                          <div class="col-md"></div>
                      </div>
-                     <!-- <div class="form-group text-uppercase font-weight-bolder">
-                         <label class="text-uppercase font-weight-bolder">Jenis Transaksi</label>
-                         <select class="form-control" name="jenis_transaksi">
-                             <option value="setoran">Setoran</option>
-                             <option value="penarikan">Penarikan</option>
-                         </select>
-                     </div> -->
                      <div class="form-group">
                          <label class="text-uppercase font-weight-bolder">Jenis Transaksi</label>
                          <input type="text" value="setoran" name="jenis_transaksi" class="form-control" readonly require>

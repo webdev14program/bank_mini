@@ -32,8 +32,10 @@ class Auth extends CI_Controller
                 redirect('Dashboard_kepala');
             } elseif ($sess_data['level'] == 'pj_harian') {
                 redirect('Dashboard_pj');
-            } elseif ($sess_data['level'] == 'teller') {
-                redirect('Dashboard_teler');
+            } elseif ($sess_data['level'] == 'teller1') {
+                redirect('Dashboard_teler1');
+            } elseif ($sess_data['level'] == 'teller2') {
+                redirect('Dashboard_teler2');
             } else {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Username dan Password salah

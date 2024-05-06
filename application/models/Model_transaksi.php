@@ -41,7 +41,8 @@ GROUP BY transaksi.nis;";
     public function dataTransaksiNIS($nis)
     {
         $sql = "SELECT * FROM `transaksi`
-WHERE transaksi.nis='$nis';";
+WHERE transaksi.nis='$nis'
+LIMIT 8;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -62,5 +63,40 @@ WHERE transaksi.nis='$nis' AND transaksi.jenis_transaksi='penarikan'
 GROUP BY transaksi.nis;";
         $query = $this->db->query($sql);
         return $query->row_array();
+    }
+
+    public function dataTabunganNIS($nis)
+    {
+        $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='setoran')  - (SELECT SUM(transaksi_admin.nominal_adm) FROM `transaksi_admin`) AS total_tabungan_siswa_nis FROM `transaksi`
+WHERE transaksi.nis='238776'
+GROUP BY transaksi.nis;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function laporan_pertahun()
+    {
+        $sql = "SELECT YEAR(transaksi.timestamp) AS tahun,(SELECT SUM(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='setoran') AS setoran,(SELECT SUM(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='penarikan') AS penarikan,(SELECT SUM(transaksi_admin.nominal_adm) FROM `transaksi_admin`) AS admin FROM `transaksi`
+GROUP BY YEAR(transaksi.timestamp);";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function fileterPerhari($tanggalawal, $tanggalakhir)
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,kelas.kelas,transaksi.jenis_transaksi,transaksi.nominal,transaksi_admin.nominal_adm,transaksi.timestamp FROM `transaksi`
+INNER JOIN siswa
+ON transaksi.nis=siswa.nis
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir'
+ORDER BY kelas.kelas,siswa.nama_siswa;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }
 }

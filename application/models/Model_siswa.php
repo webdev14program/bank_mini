@@ -75,7 +75,7 @@ INNER JOIN kelas
 ON siswa.id_kelas=kelas.slug_kelas
 INNER JOIN tahun_ajaran
 ON siswa.id_ta=tahun_ajaran.id_ta
-WHERE siswa.nis='$nis';";
+WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

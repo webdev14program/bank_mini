@@ -276,7 +276,9 @@ class Dashboard extends CI_Controller
         $isi['header'] = $this->Model_siswa->dataHeaderTransaksiNIS($nis);
         $isi['siswa'] = $this->Model_siswa->dataTransaksiNIS($nis);
 
+
         // Tabel Transaksi
+        $isi['total_tabungan'] = $this->Model_transaksi->dataTabunganNIS($nis);
         $isi['transaksi'] = $this->Model_transaksi->dataTransaksiNIS($nis);
         $isi['setoran'] = $this->Model_transaksi->dataSetoranNIS($nis);
         $isi['penarikan'] = $this->Model_transaksi->dataPenarikanNIS($nis);
@@ -319,6 +321,46 @@ class Dashboard extends CI_Controller
         redirect('Dashboard/detail_transaksi_nis/' . $nis);
     }
     // End Transaksi
+
+    // Strat Laporan
+    public function laporan_pertahun()
+    {
+        $this->Model_keamanan->getKeamanan();
+        $isi['pertahun'] = $this->Model_transaksi->laporan_pertahun();
+
+        $isi['content'] = 'Admin/laporan/tampilan_laporan_tahun';
+        $this->load->view('templates/header');
+        $this->load->view('Admin/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function laporan_perhari()
+    {
+        $this->Model_keamanan->getKeamanan();
+
+        $tanggalawal = $this->input->get('tanggalawal');
+        $tanggalakhir = $this->input->get('tanggalakhir');
+
+        $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
+
+        $isi['content'] = 'Admin/laporan/tampilan_laporan_perhari';
+        $this->load->view('templates/header');
+        $this->load->view('Admin/tampilan_dashboard', $isi);
+        $this->load->view('templates/footer');
+    }
+
+    public function print_laporan_perhari()
+    {
+        $this->Model_keamanan->getKeamanan();
+
+        $tanggalawal = $this->input->get('tanggalawal');
+        $tanggalakhir = $this->input->get('tanggalakhir');
+
+        $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
+
+        $this->load->view('Admin/laporan/tampilan_print_laporan_perhari', $isi);
+    }
+    // End Laporan
 
     // Logout
     public function logout()
