@@ -99,4 +99,35 @@ ORDER BY kelas.kelas,siswa.nama_siswa;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function fileterPerhariHeader($tanggalawal, $tanggalakhir)
+    {
+        $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='setoran') AS setoran,(SELECT sum(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='penarikan') AS penarikan, SUM(transaksi_admin.nominal_adm) AS nominal_admin,transaksi.timestamp FROM `transaksi`
+INNER JOIN siswa
+ON transaksi.nis=siswa.nis
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    public function fileterPerhariHeader2($tanggalawal, $tanggalakhir)
+    {
+        $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='setoran') AS setoran,(SELECT sum(transaksi.nominal) FROM `transaksi`
+WHERE transaksi.jenis_transaksi='penarikan') AS penarikan, SUM(transaksi_admin.nominal_adm) AS nominal_admin,transaksi.timestamp FROM `transaksi`
+INNER JOIN siswa
+ON transaksi.nis=siswa.nis
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
 }

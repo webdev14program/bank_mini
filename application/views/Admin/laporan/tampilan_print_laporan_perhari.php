@@ -33,8 +33,57 @@
                                     <h5 class="text-center text-uppercase font-weight-bold">smk tunas harapan jakarta barat</h5>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <h5 class="text-center text-uppercase font-weight-bold">per Hari tanggal : <?= $header2['timestamp'] ?></h5>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md mt-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="text-center">
+                                <tr class="">
+                                    <th scope="col">
+                                        <h6 class="font-weight-bold text-uppercase">Setoran</h6>
+                                    </th>
+                                    <th scope="col">
+                                        <h6 class="font-weight-bold text-uppercase">Penarikan</h6>
+                                    </th>
+                                    <th scope="col">
+                                        <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($header as $row) {
+                                    ?>
+                                        <td>
+                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['setoran'], 2, ',', '.')) ?></h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['penarikan'], 2, ',', '.')) ?></h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal_admin'], 2, ',', '.')) ?></h6>
+                                        </td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,9 +98,6 @@
                                 <tr class="">
                                     <th scope="col">
                                         <h6 class="font-weight-bold">#</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">NIS</h6>
                                     </th>
                                     <th scope="col">
                                         <h6 class="font-weight-bold text-uppercase">Nama Siswa</h6>
@@ -82,9 +128,7 @@
                                         <td class="text-centers">
                                             <h6><?php echo $no++; ?></h6>
                                         </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= $row['nis']; ?></h6>
-                                        </td>
+
                                         <td>
                                             <h6 class="text-uppercase "><?= $row['nama_siswa']; ?></h6>
                                         </td>

@@ -36,7 +36,7 @@
      <div class="col-md">
          <div class="card">
              <div class="card-header">
-                 <h5 class="text-center text-uppercase font-weight-bolder">Filter Print</h5>
+                 <h5 class="text-center text-uppercase font-weight-bolder">Filter Per Hari Print</h5>
              </div>
              <div class="card-body">
                  <form method="get" action="<?= base_url() ?>Dashboard/print_laporan_perhari" target="_blank">
@@ -58,6 +58,11 @@
                  </form>
              </div>
          </div>
+     </div>
+ </div>
+ <div class="row">
+     <div class="col-md">
+
      </div>
  </div>
 
