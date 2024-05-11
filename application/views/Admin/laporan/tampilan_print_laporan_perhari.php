@@ -14,73 +14,30 @@
 </head>
 
 <body>
-
-    <div class="row">
-        <div class="col-md">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">
-                                    <h5 class="text-center text-uppercase font-weight-bold">BANK MINI (Project AKL) </h5>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <h5 class="text-center text-uppercase font-weight-bold">smk tunas harapan jakarta barat</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5 class="text-center text-uppercase font-weight-bold">per Hari tanggal : <?= $header2['timestamp'] ?></h5>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="text-center">
-                                <tr class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
                                     <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Setoran</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Penarikan</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
+                                        <h5 class="text-center text-uppercase font-weight-bold">BANK MINI (Project AKL) </h5>
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="text-center">
+                            <tbody>
                                 <tr>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($header as $row) {
-                                    ?>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['setoran'], 2, ',', '.')) ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['penarikan'], 2, ',', '.')) ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal_admin'], 2, ',', '.')) ?></h6>
-                                        </td>
+                                    <td>
+                                        <h5 class="text-center text-uppercase font-weight-bold">smk tunas harapan jakarta barat</h5>
+                                    </td>
                                 </tr>
-                            <?php } ?>
+                                <tr>
+                                    <td>
+                                        <h5 class="text-center text-uppercase font-weight-bold">Antara <?= $tanggalawal ?> Sampai <?= $tanggalakhir ?></h5>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -88,6 +45,57 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md mt-3">
+            <table class="table  table-bordered">
+                <thead class="">
+                    <tr class="">
+                        <th scope="col">
+                            <h6 class="font-weight-bold text-uppercase">Storan</h6>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <tr>
+                        <?php
+                        foreach ($setoran as $row) {
+                        ?>
+                            <td>
+                                <h6 class="text-uppercase "><?= $row['setoran']; ?></h6>
+                            </td>
+
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md mt-3">
+            <table class="table  table-bordered">
+                <thead class="">
+                    <tr class="">
+                        <th scope="col">
+                            <h6 class="font-weight-bold text-uppercase">Storan</h6>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <tr>
+                        <?php
+                        foreach ($setoran as $row) {
+                        ?>
+                            <td>
+                                <h6 class="text-uppercase "><?= $row['setoran']; ?></h6>
+                            </td>
+
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md mt-3">
             <div class="card">
@@ -157,36 +165,41 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr class="text-uppercase text-center">
-                                <th scope="col">Teler 1</th>
-                                <th scope="col">Teler 2</th>
-                                <th scope="col">PJ HARIAN Bank MIni</th>
-                                <th scope="col">KEPALA Bank Mini</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><br><br><br><br><br></td>
-                                <td><br><br><br><br><br></td>
-                                <td><br><br><br><br><br></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md mt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="text-uppercase text-center">
+                                    <th scope="col">Teler 1</th>
+                                    <th scope="col">Teler 2</th>
+                                    <th scope="col">PJ HARIAN Bank MIni</th>
+                                    <th scope="col">KEPALA Bank Mini</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><br><br><br><br><br></td>
+                                    <td><br><br><br><br><br></td>
+                                    <td><br><br><br><br><br></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <script>
+
+    <!-- <script>
         window.print();
-    </script>
+    </script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

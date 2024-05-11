@@ -358,7 +358,11 @@ class Dashboard extends CI_Controller
 
         $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
         $isi['header'] = $this->Model_transaksi->fileterPerhariHeader($tanggalawal, $tanggalakhir);
-        $isi['header2'] = $this->Model_transaksi->fileterPerhariHeader2($tanggalawal, $tanggalakhir);
+
+        $isi['setoran'] = $this->Model_transaksi->fileterPerhariHeaderSetoran($tanggalawal, $tanggalakhir);
+
+        $isi['tanggalawal'] = $tanggalawal;
+        $isi['tanggalakhir'] = $tanggalakhir;
 
         $this->load->view('Admin/laporan/tampilan_print_laporan_perhari', $isi);
     }

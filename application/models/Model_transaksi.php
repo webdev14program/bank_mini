@@ -115,6 +115,14 @@ WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+    public function fileterPerhariHeaderSetoran($tanggalawal, $tanggalakhir)
+    {
+        $sql = "SELECT SUM(transaksi.nominal) AS setoran FROM `transaksi`
+WHERE transaksi.jenis_transaksi='setoran' AND transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
     public function fileterPerhariHeader2($tanggalawal, $tanggalakhir)
     {
         $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`

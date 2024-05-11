@@ -64,11 +64,11 @@
         <div class="sidebar-heading">
             Laporan
         </div>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard/laporan_pertahun">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Laporan Pertahun</span></a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>Dashboard/laporan_perhari">
                 <i class="fas fa-fw fa-chart-area"></i>
