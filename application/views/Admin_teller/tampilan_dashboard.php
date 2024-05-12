@@ -5,28 +5,20 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard_pj">
-            <div class="sidebar-brand-text mx-3 text-uppercase font-weight-bolder">PJ Harian<br>bank mini</div>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard_teller">
+            <div class="sidebar-brand-text mx-3 text-uppercase font-weight-bolder">Teller<br>bank mini</div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
-        <!-- Nav Item - Dashboard_pj -->
+        <!-- Nav Item - Dashboard_teller -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard_pj">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_teller">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
-        <hr class="sidebar-divider">
-        <div class="sidebar-heading">
-            Setting Teller
-        </div>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard_pj/setting_teller">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Setting Teller</span></a>
-        </li>
+
 
 
         <hr class="sidebar-divider">
@@ -36,7 +28,7 @@
             Transaksi
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard_pj/transaksi">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_teller/transaksi">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Transaksi</span></a>
         </li>
@@ -47,7 +39,7 @@
             Laporan
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard_pj/laporan_perhari">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_teller/laporan_perhari">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Laporan Perhari</span></a>
         </li>
@@ -58,7 +50,7 @@
             Logout
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard_pj/logout">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_teller/logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span></a>
         </li>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard_pj extends CI_Controller
+class Dashboard_teller extends CI_Controller
 {
 
 
@@ -13,14 +13,11 @@ class Dashboard_pj extends CI_Controller
         $isi['siswa'] = $this->Model_siswa->countSiswa();
         $isi['ta'] = $this->Model_Tahun_Ajaran->HomedataTA();
 
-        $isi['setoran'] = $this->Model_transaksi->dataHeaderSetoran();
-        $isi['penarikan'] = $this->Model_transaksi->dataHeaderpenarikan();
-        $isi['adm'] = $this->Model_transaksi->dataHeaderADM();
-        // $isi['total'] = $this->Model_transaksi->dataHeaderTotal();
 
-        $isi['content'] = 'Admin_pj/tampilan_home';
+
+        $isi['content'] = 'Admin_teller/tampilan_home';
         $this->load->view('templates/header');
-        $this->load->view('Admin_pj/tampilan_dashboard', $isi);
+        $this->load->view('Admin_teller/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -29,9 +26,9 @@ class Dashboard_pj extends CI_Controller
         $this->Model_keamanan->getKeamanan();
         $isi['siswa'] = $this->Model_siswa->dataSiswaTransaksi();
 
-        $isi['content'] = 'Admin_pj/transaksi/tampilan_transaksi_nis';
+        $isi['content'] = 'Admin_teller/transaksi/tampilan_transaksi_nis';
         $this->load->view('templates/header');
-        $this->load->view('Admin_pj/tampilan_dashboard', $isi);
+        $this->load->view('Admin_teller/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
     public function detail_transaksi_nis($nis)
@@ -42,15 +39,15 @@ class Dashboard_pj extends CI_Controller
 
 
         // Tabel Transaksi
-        $isi['total_tabungan'] = $this->Model_transaksi->dataTabunganNIS($nis);
+        // $isi['total_tabungan'] = $this->Model_transaksi->dataTabunganNIS($nis);
         $isi['transaksi'] = $this->Model_transaksi->dataTransaksiNIS($nis);
         $isi['setoran'] = $this->Model_transaksi->dataSetoranNIS($nis);
         $isi['penarikan'] = $this->Model_transaksi->dataPenarikanNIS($nis);
         // End Tabel
 
-        $isi['content'] = 'Admin_pj/transaksi/tampilan_detail_transaksi_nis';
+        $isi['content'] = 'Admin_teller/transaksi/tampilan_detail_transaksi_nis';
         $this->load->view('templates/header');
-        $this->load->view('Admin_pj/tampilan_dashboard', $isi);
+        $this->load->view('Admin_teller/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -120,39 +117,6 @@ class Dashboard_pj extends CI_Controller
         $this->load->view('Admin/laporan/tampilan_print_laporan_perhari', $isi);
     }
 
-    public function setting_teller()
-    {
-        $this->Model_keamanan->getKeamanan();
-        $isi['teller'] = $this->Model_teller->dataTeller();
-
-        $isi['content'] = 'Admin_pj/setting/setting_teller';
-        $this->load->view('templates/header');
-        $this->load->view('Admin_pj/tampilan_dashboard', $isi);
-        $this->load->view('templates/footer');
-    }
-
-    public function generate_password_teller()
-    {
-        $id = $this->input->post('id');
-        $username = 'AKL' . rand(1111, 9999);
-        $password = rand(111111, 999999);
-        $pass = md5($password);
-        $show_pass = $password;
-        $level = $this->input->post('level');
-
-
-        $data = array(
-            'id' => $id,
-            'username' => $username,
-            'password' => $pass,
-            'show_pass' => $show_pass,
-            'level' => $level,
-        );
-
-        $this->db->where('id', $id);
-        $this->db->update('auth', $data);
-        redirect('Dashboard_pj/setting_teller');
-    }
 
     public function logout()
     {

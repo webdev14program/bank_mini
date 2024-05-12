@@ -41,6 +41,7 @@
                                         </h5>
                                         <h1 class="h4 text-gray-900 mb-4 text-uppercase font-weight-bold">Bank Mini <br> SMK Tunas Harapan</h1>
                                     </div>
+                                    <?= $this->session->flashdata('pesan') ?>
                                     <form class="user" method="post" action="<?= base_url() ?>Auth/proses_login">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" placeholder="Username" name="username">

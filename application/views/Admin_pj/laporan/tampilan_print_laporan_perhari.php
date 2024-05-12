@@ -46,7 +46,54 @@
         </div>
     </div>
 
+    <!-- <div class="row">
+        <div class="col-md mt-3">
+            <table class="table  table-bordered">
+                <thead class="">
+                    <tr class="">
+                        <th scope="col">
+                            <h6 class="font-weight-bold text-uppercase">Storan</h6>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <tr>
+                        <?php
+                        foreach ($setoran as $row) {
+                        ?>
+                            <td>
+                                <h6 class="text-uppercase "><?= $row['setoran']; ?></h6>
+                            </td>
 
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md mt-3">
+            <table class="table  table-bordered">
+                <thead class="">
+                    <tr class="">
+                        <th scope="col">
+                            <h6 class="font-weight-bold text-uppercase">Storan</h6>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="">
+                    <tr>
+                        <?php
+                        foreach ($setoran as $row) {
+                        ?>
+                            <td>
+                                <h6 class="text-uppercase "><?= $row['setoran']; ?></h6>
+                            </td>
+
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
 
 
     <div class="row">
