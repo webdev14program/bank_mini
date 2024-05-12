@@ -97,8 +97,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.1.44',
-	'username' => 'bank_mini',
+	'hostname' => '192.168.1.46',
+	'username' => 'cbt',
 	'password' => 'rdss1995',
 	'database' => 'bank_mini',
 	'dbdriver' => 'mysqli',
