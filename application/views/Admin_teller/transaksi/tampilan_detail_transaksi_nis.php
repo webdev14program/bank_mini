@@ -47,114 +47,65 @@
                  </div>
              </div>
          </div>
+         <div class="col-md-7 mt-3 mb-4">
+             <div class="card">
+                 <div class="card-header alert alert-success">
+                     <h5 class="text-center">Transaksi</h5>
+                 </div>
+                 <div class="card-body">
+                     <div class="table-responsive">
+                         <table class="table table-striped table-bordered">
+                             <thead class="text-center">
+                                 <tr class="">
+                                     <th scope="col">
+                                         <h6 class="font-weight-bold">#</h6>
+                                     </th>
+                                     <th scope="col">
+                                         <h6 class="font-weight-bold text-uppercase">Jenis Jenis</h6>
+                                     </th>
+                                     <th scope="col">
+                                         <h6 class="font-weight-bold text-uppercase">Nominal Transaksi</h6>
+                                     </th>
+                                     <th scope="col">
+                                         <h6 class="font-weight-bold text-uppercase">Waktu Transaksi</h6>
+                                     </th>
+                                 </tr>
+                             </thead>
+                             <tbody class="text-center">
+                                 <tr>
+                                     <?php
+                                        $no = 1;
+                                        foreach ($transaksi as $row) {
+                                        ?>
+                                         <td class="text-centers">
+                                             <h6><?php echo $no++; ?></h6>
+                                         </td>
+                                         <td>
+                                             <h6 class="text-uppercase "><?= $row['jenis_transaksi']; ?></h6>
+                                         </td>
+                                         <td>
+                                             <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal'], 2, ',', '.')) ?></h6>
+                                         </td>
+                                         <td>
+                                             <h6 class="text-uppercase "><?= $row['timestamp']; ?></h6>
+                                         </td>
+                                 </tr>
+                             <?php } ?>
+                             </tbody>
+                         </table>
+                     </div>
+                     <tbody>
+
+                     </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
      </div>
  </h5>
 
 
- <div class="row">
-     <div class="col-md-5 mt-3 mb-4">
-         <div class="card">
-             <div class="card-header alert alert-primary">
-                 <h5 class="text-center">Detail Kelas</h5>
-             </div>
-             <div class="card-body">
-                 <div class="row">
-                     <div class="col-md mt-2">
-                         <div class="card">
-                             <div class="card-body">
-                                 <div class="table-responsive">
-                                     <table class="table table-striped table-bordered">
-                                         <thead class="text-center">
-                                             <tr class="">
 
-                                                 <th scope="col">
-                                                     <h6 class="font-weight-bold text-uppercase">Kelas</h6>
-                                                 </th>
-                                                 <th scope="col">
-                                                     <h6 class="font-weight-bold text-uppercase">Tahun Ajaran</h6>
-                                                 </th>
-                                             </tr>
-                                         </thead>
-                                         <tbody class="text-center">
-                                             <tr>
-                                                 <?php
-                                                    $no = 1;
-                                                    foreach ($siswa as $row) {
-                                                    ?>
-
-                                                     <td>
-                                                         <h6 class="text-uppercase "><?= $row['kelas']; ?></h6>
-                                                     </td>
-                                                     <td>
-                                                         <h6 class="text-uppercase "><?= $row['tahun_ajaran']; ?></h6>
-                                                     </td>
-                                             </tr>
-                                         <?php } ?>
-                                         </tbody>
-                                     </table>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <div class="col-md-7 mt-3 mb-4">
-         <div class="card">
-             <div class="card-header alert alert-success">
-                 <h5 class="text-center">Transaksi</h5>
-             </div>
-             <div class="card-body">
-                 <div class="table-responsive">
-                     <table class="table table-striped table-bordered">
-                         <thead class="text-center">
-                             <tr class="">
-                                 <th scope="col">
-                                     <h6 class="font-weight-bold">#</h6>
-                                 </th>
-                                 <th scope="col">
-                                     <h6 class="font-weight-bold text-uppercase">Jenis Jenis</h6>
-                                 </th>
-                                 <th scope="col">
-                                     <h6 class="font-weight-bold text-uppercase">Nominal Transaksi</h6>
-                                 </th>
-                                 <th scope="col">
-                                     <h6 class="font-weight-bold text-uppercase">Waktu Transaksi</h6>
-                                 </th>
-                             </tr>
-                         </thead>
-                         <tbody class="text-center">
-                             <tr>
-                                 <?php
-                                    $no = 1;
-                                    foreach ($transaksi as $row) {
-                                    ?>
-                                     <td class="text-centers">
-                                         <h6><?php echo $no++; ?></h6>
-                                     </td>
-                                     <td>
-                                         <h6 class="text-uppercase "><?= $row['jenis_transaksi']; ?></h6>
-                                     </td>
-                                     <td>
-                                         <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal'], 2, ',', '.')) ?></h6>
-                                     </td>
-                                     <td>
-                                         <h6 class="text-uppercase "><?= $row['timestamp']; ?></h6>
-                                     </td>
-                             </tr>
-                         <?php } ?>
-                         </tbody>
-                     </table>
-                 </div>
-                 <tbody>
-
-                 </tbody>
-                 </table>
-             </div>
-         </div>
-     </div>
- </div>
 
  <div class="modal fade" id="setoran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog modal-lg">

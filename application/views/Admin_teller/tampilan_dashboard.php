@@ -34,7 +34,7 @@
         </li>
         <hr class="sidebar-divider">
 
-        <!-- Heading -->
+        <!-- Heading
         <div class="sidebar-heading">
             Laporan
         </div>
@@ -45,7 +45,7 @@
         </li>
 
 
-        <hr class="sidebar-divider">
+        <hr class="sidebar-divider"> -->
         <div class="sidebar-heading">
             Logout
         </div>

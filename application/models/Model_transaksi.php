@@ -40,9 +40,10 @@ GROUP BY transaksi.nis;";
 
     public function dataTransaksiNIS($nis)
     {
+        $datenow = date("Y-m-d");
         $sql = "SELECT * FROM `transaksi`
-WHERE transaksi.nis='$nis'
-LIMIT 10";
+WHERE transaksi.nis='$nis' AND transaksi.timestamp='$datenow' 
+LIMIT 10;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
