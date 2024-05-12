@@ -60,7 +60,7 @@ ORDER BY siswa.id_siswa ASC;";
 
     public function dataHeaderTransaksiNIS($nis)
     {
-        $sql = "SELECT siswa.nis,siswa.id_ta,siswa.nama_siswa,tahun_ajaran.tahun_ajaran,tahun_ajaran.status FROM `siswa`
+        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.id_ta,siswa.nama_siswa,tahun_ajaran.tahun_ajaran,tahun_ajaran.status FROM `siswa`
 INNER JOIN tahun_ajaran
 ON siswa.id_ta=tahun_ajaran.id_ta
 WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
@@ -70,7 +70,7 @@ WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
 
     public function dataTransaksiNIS($nis)
     {
-        $sql = "SELECT kelas.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
+        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.nama_siswa,kelas.kelas,tahun_ajaran.tahun_ajaran FROM `siswa`
 INNER JOIN kelas
 ON siswa.id_kelas=kelas.slug_kelas
 INNER JOIN tahun_ajaran

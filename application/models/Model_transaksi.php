@@ -42,7 +42,7 @@ GROUP BY transaksi.nis;";
     {
         $sql = "SELECT * FROM `transaksi`
 WHERE transaksi.nis='$nis'
-LIMIT 8;";
+LIMIT 10";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -67,10 +67,11 @@ GROUP BY transaksi.nis;";
 
     public function dataTabunganNIS($nis)
     {
-        $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`
-WHERE transaksi.jenis_transaksi='setoran')  - (SELECT SUM(transaksi_admin.nominal_adm) FROM `transaksi_admin`) AS total_tabungan_siswa_nis FROM `transaksi`
-WHERE transaksi.nis='238776'
-GROUP BY transaksi.nis;";
+        $sql = "SELECT SUM(IF(transaksi.jenis_transaksi='setoran',transaksi.nominal,0)) AS setoran,
+SUM(IF(transaksi.jenis_transaksi='penarikan',transaksi.nominal,0)) AS penarikan,
+SUM(IF(transaksi.jenis_transaksi='setoran',transaksi.nominal,0)-IF(transaksi.jenis_transaksi='penarikan',transaksi.nominal,0)) as tabungan
+FROM `transaksi`
+WHERE transaksi.nis='$nis';";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -89,7 +90,7 @@ GROUP BY YEAR(transaksi.timestamp);";
     {
         $sql = "SELECT siswa.nis,siswa.nama_siswa,kelas.kelas,transaksi.jenis_transaksi,transaksi.nominal,transaksi_admin.nominal_adm,transaksi.timestamp FROM `transaksi`
 INNER JOIN siswa
-ON transaksi.nis=siswa.nis
+ON transaksi.id_siswa=siswa.id_siswa
 INNER JOIN kelas
 ON siswa.id_kelas=kelas.slug_kelas
 INNER JOIN transaksi_admin
@@ -102,16 +103,15 @@ ORDER BY kelas.kelas,siswa.nama_siswa;";
 
     public function fileterPerhariHeader($tanggalawal, $tanggalakhir)
     {
-        $sql = "SELECT (SELECT sum(transaksi.nominal) FROM `transaksi`
-WHERE transaksi.jenis_transaksi='setoran') AS setoran,(SELECT sum(transaksi.nominal) FROM `transaksi`
-WHERE transaksi.jenis_transaksi='penarikan') AS penarikan, SUM(transaksi_admin.nominal_adm) AS nominal_admin,transaksi.timestamp FROM `transaksi`
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,kelas.kelas,transaksi.jenis_transaksi,transaksi.nominal,transaksi_admin.nominal_adm,transaksi.timestamp FROM `transaksi`
 INNER JOIN siswa
-ON transaksi.nis=siswa.nis
+ON transaksi.id_siswa=siswa.id_siswa
 INNER JOIN kelas
 ON siswa.id_kelas=kelas.slug_kelas
 INNER JOIN transaksi_admin
 ON transaksi.id_transaksi=transaksi_admin.id_transaksi
-WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
+WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir'
+ORDER BY kelas.kelas,siswa.nama_siswa;";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

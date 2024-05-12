@@ -7,7 +7,7 @@
  </div>
 
  <div class="row">
-     <div class="col-md mt-2">
+     <div class="col-md-5 mt-2">
          <div class="row">
              <div class="col">
                  <div class="card">
@@ -96,9 +96,7 @@
                                      <table class="table table-striped table-bordered">
                                          <thead class="text-center">
                                              <tr class="">
-                                                 <th scope="col">
-                                                     <h6 class="font-weight-bold">#</h6>
-                                                 </th>
+
                                                  <th scope="col">
                                                      <h6 class="font-weight-bold text-uppercase">Kelas</h6>
                                                  </th>
@@ -113,9 +111,7 @@
                                                     $no = 1;
                                                     foreach ($siswa as $row) {
                                                     ?>
-                                                     <td class="text-centers">
-                                                         <h6><?php echo $no++; ?></h6>
-                                                     </td>
+
                                                      <td>
                                                          <h6 class="text-uppercase "><?= $row['kelas']; ?></h6>
                                                      </td>
@@ -134,7 +130,7 @@
              </div>
          </div>
      </div>
-     <div class="col-md mt-3 mb-4">
+     <div class="col-md-7 mt-3 mb-4">
          <div class="card">
              <div class="card-header alert alert-success">
                  <h5 class="text-center">Transaksi</h5>
@@ -148,13 +144,13 @@
                                      <h6 class="font-weight-bold">#</h6>
                                  </th>
                                  <th scope="col">
-                                     <h6 class="font-weight-bold text-uppercase">Jenis Transaksi</h6>
+                                     <h6 class="font-weight-bold text-uppercase">Jenis Jenis</h6>
                                  </th>
                                  <th scope="col">
                                      <h6 class="font-weight-bold text-uppercase">Nominal Transaksi</h6>
                                  </th>
                                  <th scope="col">
-                                     <h6 class="font-weight-bold text-uppercase">Nominal Transaksi</h6>
+                                     <h6 class="font-weight-bold text-uppercase">Waktu Transaksi</h6>
                                  </th>
                              </tr>
                          </thead>
@@ -197,10 +193,12 @@
                  <h5 class="modal-title text-uppercase font-weight-bolder">Tambah Setoran</h5>
              </div>
              <div class="modal-body">
-                 <form method="post" action="<?= base_url() ?>Dashboard/tambah_transaksi">
+                 <form method="post" action="<?= base_url() ?>Dashboard_pj/tambah_transaksi">
                      <div class="form-group">
-                         <label class="text-uppercase font-weight-bolder">NIS</label>
                          <input type="text" name="nis" value="<?= $header['nis'] ?>" class="form-control" require hidden>
+                     </div>
+                     <div class="form-group">
+                         <input type="text" name="id_siswa" value="<?= $header['id_siswa'] ?>" class="form-control" require hidden>
                      </div>
                      <div class="form-group">
                          <label class="text-uppercase font-weight-bolder">NAMA SISWA</label>
@@ -254,10 +252,12 @@
                  <h5 class="modal-title text-uppercase font-weight-bolder">Tambah Penarikan</h5>
              </div>
              <div class="modal-body">
-                 <form method="post" action="<?= base_url() ?>Dashboard/tambah_transaksi">
+                 <form method="post" action="<?= base_url() ?>Dashboard_pj/tambah_transaksi">
                      <div class="form-group">
-                         <label class="text-uppercase font-weight-bolder">NIS</label>
                          <input type="text" name="nis" value="<?= $header['nis'] ?>" class="form-control" require hidden>
+                     </div>
+                     <div class="form-group">
+                         <input type="text" name="id_siswa" value="<?= $header['id_siswa'] ?>" class="form-control" require hidden>
                      </div>
                      <div class="form-group">
                          <label class="text-uppercase font-weight-bolder">NAMA SISWA</label>

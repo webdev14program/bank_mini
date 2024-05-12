@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
         $isi['setoran'] = $this->Model_transaksi->dataHeaderSetoran();
         $isi['penarikan'] = $this->Model_transaksi->dataHeaderpenarikan();
         $isi['adm'] = $this->Model_transaksi->dataHeaderADM();
-        $isi['total'] = $this->Model_transaksi->dataHeaderTotal();
+        // $isi['total'] = $this->Model_transaksi->dataHeaderTotal();
 
         $isi['content'] = 'Admin/tampilan_home';
         $this->load->view('templates/header');
