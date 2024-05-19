@@ -81,7 +81,7 @@ class Dashboard_teller extends CI_Controller
 
         $this->db->insert('transaksi', $data);
         $this->db->insert('transaksi_admin', $data_admin);
-        redirect('Dashboard_pj/detail_transaksi_nis/' . $nis);
+        redirect('Dashboard_teller/detail_transaksi_nis/' . $nis);
     }
 
     public function laporan_perhari()
@@ -89,13 +89,12 @@ class Dashboard_teller extends CI_Controller
         $this->Model_keamanan->getKeamanan();
 
         $tanggalawal = $this->input->get('tanggalawal');
-        $tanggalakhir = $this->input->get('tanggalakhir');
 
-        $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
+        $isi['perhari'] = $this->Model_transaksi->fileterPerhariTeller($tanggalawal);
 
-        $isi['content'] = 'Admin_pj/laporan/tampilan_laporan_perhari';
+        $isi['content'] = 'Admin_teller/laporan/tampilan_laporan_perhari';
         $this->load->view('templates/header');
-        $this->load->view('Admin_pj/tampilan_dashboard', $isi);
+        $this->load->view('Admin_teller/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
 
@@ -104,17 +103,19 @@ class Dashboard_teller extends CI_Controller
         $this->Model_keamanan->getKeamanan();
 
         $tanggalawal = $this->input->get('tanggalawal');
-        $tanggalakhir = $this->input->get('tanggalakhir');
 
-        $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
-        $isi['header'] = $this->Model_transaksi->fileterPerhariHeader($tanggalawal, $tanggalakhir);
+
+        $isi['perhari'] = $this->Model_transaksi->fileterPerhariTeller($tanggalawal);
+        $isi['header'] = $this->Model_transaksi->fileterPerhariHeaderTeller($tanggalawal);
+
+        $isi['teller'] = $this->Model_transaksi->perhariTeller($tanggalawal);
+
 
         // $isi['setoran'] = $this->Model_transaksi->fileterPerhariHeaderSetoran($tanggalawal, $tanggalakhir);
 
         $isi['tanggalawal'] = $tanggalawal;
-        $isi['tanggalakhir'] = $tanggalakhir;
 
-        $this->load->view('Admin/laporan/tampilan_print_laporan_perhari', $isi);
+        $this->load->view('Admin_teller/laporan/tampilan_print_laporan_perhari', $isi);
     }
 
 

@@ -39,6 +39,10 @@ class Dashboard extends CI_Controller
         $this->load->view('Admin/tampilan_dashboard', $isi);
         $this->load->view('templates/footer');
     }
+    public function edit_tahun_ajaran()
+    {
+        $id_ta = $this->load->view('id_ta');
+    }
     // End Tahun Ajaran
 
     // Start Jurusan

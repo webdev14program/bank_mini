@@ -5,7 +5,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>Dashboard_kepala">
             <div class="sidebar-brand-text mx-3 text-uppercase font-weight-bolder">kepala<br>bank mini</div>
         </a>
 
@@ -14,32 +14,30 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_kepala">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
+        <div class="sidebar-heading">
+            Transaksi
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_kepala/transaksi">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Transaksi</span></a>
+        </li>
+        <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
             Laporan
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/transaksi">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_kepala/laporan_perhari">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Laporan Perhari</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/transaksi">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Laporan Perbulan</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/transaksi">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Laporan Pertahun</span></a>
         </li>
         <hr class="sidebar-divider">
 
@@ -47,7 +45,7 @@
             Logout
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>Dashboard/logout">
+            <a class="nav-link" href="<?= base_url() ?>Dashboard_kepala/logout">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Logout</span></a>
         </li>

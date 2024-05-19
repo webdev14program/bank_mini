@@ -112,12 +112,12 @@ class Dashboard_pj extends CI_Controller
         $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
         $isi['header'] = $this->Model_transaksi->fileterPerhariHeader($tanggalawal, $tanggalakhir);
 
-        // $isi['setoran'] = $this->Model_transaksi->fileterPerhariHeaderSetoran($tanggalawal, $tanggalakhir);
+        $isi['total_pj'] = $this->Model_transaksi->perhariPJ($tanggalawal, $tanggalakhir);
 
         $isi['tanggalawal'] = $tanggalawal;
         $isi['tanggalakhir'] = $tanggalakhir;
 
-        $this->load->view('Admin/laporan/tampilan_print_laporan_perhari', $isi);
+        $this->load->view('Admin_pj/laporan/tampilan_print_laporan_perhari', $isi);
     }
 
     public function setting_teller()

@@ -35,7 +35,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h5 class="text-center text-uppercase font-weight-bold">Antara <?= $tanggalawal ?> Sampai <?= $tanggalakhir ?></h5>
+                                        <h5 class="text-center text-uppercase font-weight-bold">Tanggal <?= $tanggalawal ?></h5>
                                     </td>
                                 </tr>
                             </tbody>
@@ -48,75 +48,73 @@
 
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md mt-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead class="">
+                                    <tr class="">
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold">#</h6>
+                                        </th>
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold text-uppercase">Nama Siswa</h6>
+                                        </th>
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold text-uppercase">Kelas</h6>
+                                        </th>
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold text-uppercase">Transaksi</h6>
+                                        </th>
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold text-uppercase">Nominal</h6>
+                                        </th>
+                                        <th scope="col">
+                                            <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
+                                        </th>
 
-    <div class="row">
-        <div class="col-md mt-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead class="">
-                                <tr class="">
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold">#</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nama Siswa</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Kelas</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Transaksi</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nominal</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
-                                    </th>
-                                    <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($perhari as $row) {
-                                    ?>
-                                        <td class="text-centers">
-                                            <h6><?php echo $no++; ?></h6>
-                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody class="">
+                                    <tr>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($perhari as $row) {
+                                        ?>
+                                            <td class="text-centers">
+                                                <h6><?php echo $no++; ?></h6>
+                                            </td>
 
-                                        <td>
-                                            <h6 class="text-uppercase "><?= $row['nama_siswa']; ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= $row['kelas']; ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= $row['jenis_transaksi']; ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal'], 2, ',', '.')) ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal_adm'], 2, ',', '.')) ?></h6>
-                                        </td>
-                                        <td>
-                                            <h6 class="text-uppercase "><?= $row['timestamp']; ?></h6>
-                                        </td>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
+                                            <td>
+                                                <h6 class="text-uppercase "><?= $row['nama_siswa']; ?></h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="text-uppercase "><?= $row['kelas']; ?></h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="text-uppercase "><?= $row['jenis_transaksi']; ?></h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal'], 2, ',', '.')) ?></h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="text-uppercase "><?= ("Rp " . number_format($row['nominal_adm'], 2, ',', '.')) ?></h6>
+                                            </td>
+
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container">
         <div class="row">
@@ -141,7 +139,7 @@
                                 <tr>
                                     <?php
                                     $no = 1;
-                                    foreach ($total_pj as $row) {
+                                    foreach ($teller as $row) {
                                     ?>
                                         <td>
                                             <h6 class="text-uppercase text-center"><?= ("Rp " . number_format($row['setoran'], 2, ',', '.')) ?></h6>
@@ -162,6 +160,7 @@
 
         </div>
     </div>
+
 
     <div class="container">
         <div class="row">

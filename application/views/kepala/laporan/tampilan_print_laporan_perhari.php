@@ -76,7 +76,7 @@
                                         <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
                                     </th>
                                     <th scope="col">
-                                        <h6 class="font-weight-bold text-uppercase">Nominal ADM</h6>
+                                        <h6 class="font-weight-bold text-uppercase">Tanggal</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -141,7 +141,7 @@
                                 <tr>
                                     <?php
                                     $no = 1;
-                                    foreach ($total_pj as $row) {
+                                    foreach ($total_kepala as $row) {
                                     ?>
                                         <td>
                                             <h6 class="text-uppercase text-center"><?= ("Rp " . number_format($row['setoran'], 2, ',', '.')) ?></h6>
@@ -162,6 +162,7 @@
 
         </div>
     </div>
+
 
     <div class="container">
         <div class="row">

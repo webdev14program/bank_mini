@@ -139,4 +139,59 @@ WHERE transaksi.timestamp BETWEEN '$tanggalawal' AND '$tanggalakhir';";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
+
+    public function fileterPerhariTeller($tanggalawal)
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,kelas.kelas,transaksi.jenis_transaksi,transaksi.nominal,transaksi_admin.nominal_adm,transaksi.timestamp FROM `transaksi`
+INNER JOIN siswa
+ON transaksi.id_siswa=siswa.id_siswa
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE transaksi.timestamp='$tanggalawal'
+ORDER BY kelas.kelas,siswa.nama_siswa;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    public function fileterPerhariHeaderTeller($tanggalawal)
+    {
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,kelas.kelas,transaksi.jenis_transaksi,transaksi.nominal,transaksi_admin.nominal_adm,transaksi.timestamp FROM `transaksi`
+INNER JOIN siswa
+ON transaksi.id_siswa=siswa.id_siswa
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE transaksi.timestamp='$tanggalawal'
+ORDER BY kelas.kelas,siswa.nama_siswa;";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
+    public function perhariTeller($tanggalawal)
+    {
+        $sql = "SELECT SUM(IF(transaksi.jenis_transaksi='setoran',transaksi.nominal,0)) AS setoran,
+SUM(IF(transaksi.jenis_transaksi='penarikan',transaksi.nominal,0)) AS penarikan,
+(SELECT sum(transaksi_admin.nominal_adm) FROM `transaksi_admin`
+WHERE date(transaksi_admin.timestamp)='$tanggalawal') AS adm
+FROM `transaksi`
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE date(transaksi_admin.timestamp)='$tanggalawal';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    public function perhariPJ($tanggalawal, $tanggalakhir)
+    {
+        $sql = "SELECT SUM(IF(transaksi.jenis_transaksi='setoran',transaksi.nominal,0)) AS setoran,
+SUM(IF(transaksi.jenis_transaksi='penarikan',transaksi.nominal,0)) AS penarikan,
+(SELECT sum(transaksi_admin.nominal_adm) FROM `transaksi_admin`
+WHERE date(transaksi_admin.timestamp) BETWEEN '$tanggalawal' AND '$tanggalakhir') AS adm
+FROM `transaksi`
+INNER JOIN transaksi_admin
+ON transaksi.id_transaksi=transaksi_admin.id_transaksi
+WHERE date(transaksi_admin.timestamp) BETWEEN '$tanggalawal' AND '$tanggalakhir';";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }

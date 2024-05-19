@@ -1,7 +1,24 @@
  <div class="row">
      <div class="col-md">
          <div class="alert alert-success" role="alert">
-             <h4 class="text-center text-uppercase font-weight-bolder">Transaksi <br><?= $header['nama_siswa'] ?></h4>
+             <h4 class="text-center text-uppercase font-weight-bolder">Transaksi</h4>
+         </div>
+     </div>
+ </div>
+ <div class="row">
+     <div class="col-md">
+         <div class="alert alert-primary" role="alert">
+             <h6 class="text-uppercase font-weight-bolder">Nama Siswa : <?= $header['nama_siswa'] ?></h6>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="alert alert-primary" role="alert">
+             <h6 class="text-uppercase font-weight-bolder">Kelas : <?= $header['kelas'] ?></h6>
+         </div>
+     </div>
+     <div class="col-md-3">
+         <div class="alert alert-primary" role="alert">
+             <h6 class="text-uppercase font-weight-bolder">Tahun Ajaran : <?= $header['tahun_ajaran'] ?></h6>
          </div>
      </div>
  </div>
@@ -114,7 +131,7 @@
                  <h5 class="modal-title text-uppercase font-weight-bolder">Tambah Setoran</h5>
              </div>
              <div class="modal-body">
-                 <form method="post" action="<?= base_url() ?>Dashboard_pj/tambah_transaksi">
+                 <form method="post" action="<?= base_url() ?>Dashboard_teller/tambah_transaksi">
                      <div class="form-group">
                          <input type="text" name="nis" value="<?= $header['nis'] ?>" class="form-control" require hidden>
                      </div>
@@ -173,7 +190,7 @@
                  <h5 class="modal-title text-uppercase font-weight-bolder">Tambah Penarikan</h5>
              </div>
              <div class="modal-body">
-                 <form method="post" action="<?= base_url() ?>Dashboard_pj/tambah_transaksi">
+                 <form method="post" action="<?= base_url() ?>Dashboard_teller/tambah_transaksi">
                      <div class="form-group">
                          <input type="text" name="nis" value="<?= $header['nis'] ?>" class="form-control" require hidden>
                      </div>

@@ -47,11 +47,14 @@ WHERE tahun_ajaran.id_ta='$id_ta';";
 
     public function dataSiswaTransaksi()
     {
-        $sql = "SELECT siswa.nis,siswa.nama_siswa,jurusan.jurusan FROM `siswa`
+        $sql = "SELECT siswa.nis,siswa.nama_siswa,jurusan.jurusan,tahun_ajaran.tahun_ajaran FROM `siswa`
 INNER JOIN kelas
 ON siswa.id_kelas=kelas.slug_kelas
 INNER JOIN jurusan
 ON siswa.kode=jurusan.kode
+INNER JOIN tahun_ajaran
+ON siswa.id_ta=tahun_ajaran.id_ta
+WHERE tahun_ajaran.status='AKTIF'
 GROUP BY siswa.nis
 ORDER BY siswa.id_siswa ASC;";
         $query = $this->db->query($sql);
@@ -60,9 +63,11 @@ ORDER BY siswa.id_siswa ASC;";
 
     public function dataHeaderTransaksiNIS($nis)
     {
-        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.id_ta,siswa.nama_siswa,tahun_ajaran.tahun_ajaran,tahun_ajaran.status FROM `siswa`
+        $sql = "SELECT siswa.id_siswa,siswa.nis,siswa.id_ta,siswa.nama_siswa,kelas.kelas,tahun_ajaran.tahun_ajaran,tahun_ajaran.status FROM `siswa`
 INNER JOIN tahun_ajaran
 ON siswa.id_ta=tahun_ajaran.id_ta
+INNER JOIN kelas
+ON siswa.id_kelas=kelas.slug_kelas
 WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
         return $query->row_array();
@@ -79,6 +84,8 @@ WHERE siswa.nis='$nis' AND tahun_ajaran.status='AKTIF';";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+
 
     function simpanSiswa($data = array())
     {
