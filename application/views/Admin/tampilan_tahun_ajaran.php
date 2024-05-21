@@ -26,9 +26,9 @@
                                 <th scope="col">
                                     <h6 class="font-weight-bold text-uppercase">Status</h6>
                                 </th>
-                                <th scope="col">
+                                <!-- <th scope="col">
                                     <h6 class="font-weight-bold text-uppercase">Aksi</h6>
-                                </th>
+                                </th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -49,9 +49,9 @@
                                     <td>
                                         <h6 class="text-uppercase"><?php echo $row['status']; ?></h6>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <h5 class="text-center">
-                                            <form>
+                                            <form action="<?= base_url() ?>Dashboard/edit_tahun_ajaran" method="post">
                                                 <input type="text" class="form-control" value="<?php echo $row['id_ta']; ?>" name="id_ta">
                                                 <input type="text" class="form-control" value="<?php echo $row['tahun_ajaran']; ?>" name="tahun_ajaran">
                                                 <input type="text" class="form-control" value="<?php echo $row['status']; ?>" name="status
@@ -59,7 +59,7 @@
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </h5>
-                                    </td>
+                                    </td> -->
                             </tr>
                         <?php } ?>
                         </tbody>

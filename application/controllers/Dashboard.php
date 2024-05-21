@@ -41,7 +41,18 @@ class Dashboard extends CI_Controller
     }
     public function edit_tahun_ajaran()
     {
-        $id_ta = $this->load->view('id_ta');
+        $id_ta = $this->input->post('id_ta');
+        $tahun_ajaran = $this->input->post('tahun_ajaran');
+        $status = $this->input->post('status');
+
+        $data = array(
+            'id_ta' => $id_ta,
+            'tahun_ajaran' => $tahun_ajaran,
+            'status' => $status
+        );
+
+        $this->db->where('id_ta', $id_ta);
+        $this->db->update('tahun_ajaran', $data);
     }
     // End Tahun Ajaran
 
@@ -363,7 +374,7 @@ class Dashboard extends CI_Controller
         $isi['perhari'] = $this->Model_transaksi->fileterPerhari($tanggalawal, $tanggalakhir);
         $isi['header'] = $this->Model_transaksi->fileterPerhariHeader($tanggalawal, $tanggalakhir);
 
-        $isi['setoran'] = $this->Model_transaksi->fileterPerhariHeaderSetoran($tanggalawal, $tanggalakhir);
+        $isi['total'] = $this->Model_transaksi->perhariPJ($tanggalawal, $tanggalakhir);
 
         $isi['tanggalawal'] = $tanggalawal;
         $isi['tanggalakhir'] = $tanggalakhir;
